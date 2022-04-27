@@ -45,6 +45,11 @@
  openai-{category}-{engine}-{query_head}...{query_tail}-{query_hash_short}-{timestamp}.json
  ```
 
+ Example output:
+ ```
+ openai-antimoneylaundering-text-davinci-002-definemoneylaunderin...ternationalcriminals-21f8af8c-1651057535.json
+ ```
+
  Supported keywords:
 
  - `{category}` - parameter of `send_query`.
