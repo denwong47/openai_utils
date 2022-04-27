@@ -30,15 +30,21 @@
  `query` - Prompt to be sent. \
  `category` - Used for logging only - can be used in file name via `{category}`\
  `log_filename_format` - Format of log json file name. See separate section below.
- `log_path` - Path of log json files. Default to environmental variable `OPENAI_LOG_PATH` if `None`.\
+ `log_path` - Path of log json files. Default to environmental variable `OPENAI_LOG_PATH` if `None`. If `OPENAI_LOG_PATH` is not set, no logs are generated.\
  `engine_id` - Valid engine name for OpenAI. Use `openai_utils.status.print_engine_list()` to see all available engines.\
  `endpoint` - name for endpoint for OpenAI. Expects `completion`, `edits`, `classification`, etc. Not case-sensitive.\
  `max_tokens` - maximum tokens allowed.\
- `**kwargs` - any other keyworded arguments as per OpenAI API Documentation.\
+ `**kwargs` - any other keyworded arguments as per OpenAI API Documentation.
 
 # Misc Settings
 
 ### Log File Format Strings
+
+ Defaults to:
+ ```
+ openai-{category}-{engine}-{query_head}...{query_tail}-{query_hash_short}-{timestamp}.json
+ ```
+
  Supported keywords:
 
  - `{category}` - parameter of `send_query`.
