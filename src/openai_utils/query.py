@@ -26,6 +26,7 @@ def send(
     engine_id:str = "text-davinci-002",
     endpoint:str = "completions",
     max_tokens:int = 512,
+    temperature:float = 0.7,
     **kwargs,
 ):
     """
@@ -48,6 +49,7 @@ def send(
         "engine":       engine_id,
         "prompt":       query,
         "max_tokens":   max_tokens,
+        "temperature":  temperature,
         **kwargs,
     }
 
