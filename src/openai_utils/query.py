@@ -64,6 +64,11 @@ def send(
                 f"{type(e).__name__}: {str(e)}",
             )
 
+
+    # Embed the original query into the object
+    _response["prompt"] = query
+    _response["duration"] = _process_duration
+    
     # log result
     if (log_path is not None):
         _clean_query = clean_query(query)
@@ -88,10 +93,6 @@ def send(
             )
         )
 
-        # Embed the original query into the object
-        _response["prompt"] = query
-        _response["duration"] = _process_duration
-
         try:
             with open(_log_path, "w") as _f:
                 json.dump(
@@ -99,8 +100,6 @@ def send(
                     _f,
                     indent=4,
                 )
-
-            return _response
         except (
             FileNotFoundError,
             OSError,
@@ -108,3 +107,5 @@ def send(
             return exceptions.LocalFileSystemError(
                 f"{type(e).__name__}: {str(e)}",
             )
+
+    return _response
